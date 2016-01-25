@@ -81,7 +81,7 @@ randymxxyy=makeY[randemxxyy];
 randxmp=Flatten[Table[Table[randxmxxyy[[#1,#2,#3,#4]]&@@(cfneither[ii]+1)~Join~(cfneither[jj]+1),{jj,ii,numferm}],{ii,numferm}],1];
 
 
-randymp=Flatten[Table[Table[randymxxyy[[#1,#2,#3,#4]]&@@(cfneither[ii]+1)~Join~(cfneither[jj]+1),{jj,ii,numferm}],{ii,numferm}],1];
+randymp=Flatten[Table[Table[randymxxyy[[#1,#2,#3,#4]]&@@(cfneither[ii]+1)~Join~(cfneither[jj]+1),{jj,ii+1,numferm}],{ii,numferm}],1];
 
 
 (* ::Subsubsection:: *)

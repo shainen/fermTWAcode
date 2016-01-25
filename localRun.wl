@@ -36,7 +36,7 @@ SetDirectory[NotebookDirectory[]]
 Dynamic[rr]
 
 
-fnums=TWAresults;
+fnums=(TWAresults+1)/2;
 
 
 mmu=MaxMemoryUsed[]/10.^6
