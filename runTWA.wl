@@ -42,4 +42,4 @@ mmu=MaxMemoryUsed[]/10.^6;
 SetDirectory[ParentDirectory[]];
 
 
-Save["4site.dat",{mmu,fnums}];
+Save["fermTWAres.dat",{mmu,fnums}];
