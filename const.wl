@@ -1,6 +1,9 @@
 (* ::Package:: *)
 
-tmax=50;
+tscale=10;
+
+
+tmax=4 tscale;
 steps=500;
 times=Range[0,tmax,tmax/(steps-1)];
 
@@ -17,10 +20,10 @@ coh = {0,0};
 occupied={1,3};
 
 
-\[Omega][t_] := -1;
+\[Omega][t_] := -20(1-2E^(-t^2/tscale^2))
 
 
-g[t_] := 1;
+g[t_] := 1
 
 
 numbos = length;

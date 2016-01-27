@@ -10,6 +10,8 @@ qsubfile = Template("""
 #PBS -j oe
 #PBS -l mem=300mb
 #PBS -V
+#PBS -m ea
+#PBS -M shainen@gmail.com
 
 RUN_NAME=${rname}
 SCRATCH_DIR=/data/$$USER/$$RUN_NAME/r$$PBS_ARRAYID
