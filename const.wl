@@ -1,32 +1,32 @@
 (* ::Package:: *)
 
-(*tscale=10;*)
+tscale=20;
 
 
-tmax=50;
+tmax=4 tscale;
 steps=500;
 times=Range[0,tmax,tmax/(steps-1)];
 
 
-runs=100;
+runs=10;
 
 
 length=2;
 
 
-coh = {3,3};
+coh = {0,0};
 
 
-occupied={1,3};
+occupied={2,4};
 
 
-(*\[Omega][t_] := -20(1-2\[ExponentialE]^(-t^2/tscale^2))*)
+\[Omega][t_] := -20(1-2E^(-t^2/tscale^2))
 
 
-\[Omega][t_] := -1
+(*\[Omega][t_] := -1*)
 
 
-g[t_] := 1/3
+g[t_] := 1
 
 
 numbos = length;
