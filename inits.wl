@@ -26,6 +26,12 @@ sdxu=Table[Table[2there[ii]there[jj]-there[ii]-there[jj]+1,{jj,ii+1,numferm}],{i
 sdyu=Table[Table[2there[ii]there[jj]-there[ii]-there[jj]+1,{jj,ii+1,numferm}],{ii,numferm}];
 
 
+sdxm=Table[Table[0,{jj,ii,numferm}],{ii,numferm}];
+sdym=Table[Table[0,{jj,ii+1,numferm}],{ii,numferm}];
+sdxu=Table[Table[0,{jj,ii+1,numferm}],{ii,numferm}];
+sdyu=Table[Table[0,{jj,ii+1,numferm}],{ii,numferm}];
+
+
 fsd=Flatten[{sdxm,sdym,sdxu,sdyu}];
 
 

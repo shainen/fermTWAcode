@@ -11,7 +11,7 @@
 SetDirectory[NotebookDirectory[]]
 
 
-<<const.wl
+<<const2d.wl
 
 
 <<dynfunc.wl
@@ -23,7 +23,7 @@ SetDirectory[NotebookDirectory[]]
 <<runfuncs.wl
 
 
-<<2siteeqns.wl
+<<2deqns.wl
 
 
 <<inits.wl

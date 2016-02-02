@@ -7,6 +7,12 @@
 cfneither[num_]:=IntegerDigits[num-1,length,2]
 
 
+nfc[coord_]:=FromDigits[addl[coord],length]+1
+
+
+addl[num_]:=Mod[num,length]
+
+
 (* ::Subsubsection:: *)
 (*fourier funcs*)
 

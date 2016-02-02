@@ -1,14 +1,14 @@
 (* ::Package:: *)
 
-tscale=20;
+(*tscale=20;*)
 
 
-tmax=4 tscale;
+tmax=50;
 steps=500;
 times=Range[0,tmax,tmax/(steps-1)];
 
 
-runs=10;
+runs=100;
 
 
 length=2;
@@ -17,7 +17,7 @@ length=2;
 coh = {0,0};
 
 
-occupied={2,4};
+occupied={1,3};
 
 
 \[Omega][t_] := -20(1-2E^(-t^2/tscale^2))
