@@ -26,7 +26,7 @@ SetDirectory[NotebookDirectory[]]
 <<2deqns.wl
 
 
-<<inits.wl
+<<2dinits.wl
 
 
 (* ::Subsection:: *)
