@@ -13,7 +13,7 @@ fvars=Flatten[{Table[Table[xm[ii,jj],{jj,ii,numferm}],{ii,numferm}],Table[Table[
 vars=bvars~Join~fvars;
 
 
-bonds=Flatten[{{#,nfc[cfneither[#]+{0,1}]},{#,nfc[cfneither[#]+{1,0}]},{#,nfc[cfneither[#]+{0,1}]}+{sites,sites},{#,nfc[cfneither[#]+{1,0}]}+{sites,sites}}&/@Range[sites],1];
+bonds=Flatten[{{#,nfc[cfneither[#]+{0,0,1}]},{#,nfc[cfneither[#]+{0,1,0}]}}&/@Range[numferm],1];
 
 
 hamkinb=Total[(bh[#][t]\[Conjugate]bh[#][t]-1/2)&/@Range[sites]];
@@ -31,7 +31,7 @@ hamtot=\[Omega][t]hamkinb+hamkinf+g[t]hamint;
 beqns=Table[bdot[bh[nn],hamtot],{nn,numbos}];
 
 
-Timing[feqns=alldot[hamtot];]
+feqns=alldot[hamtot];
 
 
 TWAeqns=Flatten[{beqns,feqns}];
