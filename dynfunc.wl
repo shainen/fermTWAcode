@@ -6,7 +6,7 @@ vxu[xx_,yy_]:=Which[yy==xx,0,yy<xx,-xu[yy,xx][t],True,xu[xx,yy][t]]
 vyu[xx_,yy_]:=Which[yy==xx,0,yy<xx,-yu[yy,xx][t],True,yu[xx,yy][t]]
 
 
-dot[ham_,a_,b_,der_,res_,sign_?VectorQ]:=Sum[D[ham,der[g,d][t]]((-1)^sign[[1]] KroneckerDelta[b,g]res[a,d]+(-1)^sign[[2]] KroneckerDelta[b,d]res[a,g]+(-1)^sign[[3]] KroneckerDelta[a,g]res[b,d]+(-1)^sign[[4]] KroneckerDelta[a,d]res[b,g]),{g,numferm},{d,numferm}]
+dot[ham_,a_,b_,der_,res_,sign_?VectorQ]:=Sum[D[ham,der[b,d][t]](-1)^sign[[1]]res[a,d]+D[ham,der[a,d][t]](-1)^sign[[3]] res[b,d],{d,numferm}]+Sum[D[ham,der[g,b][t]](-1)^sign[[2]]res[a,g]+D[ham,der[g,a][t]](-1)^sign[[4]] res[b,g],{g,numferm}]
 
 
 xmdot[ham_,a_,b_]:=dot[ham,a,b,xm,vym,{1,1,1,1}]+dot[ham,a,b,ym,vxm,{0,1,0,1}]+dot[ham,a,b,xu,vyu,{1,0,1,0}]+dot[ham,a,b,yu,vxu,{0,1,0,1}]
@@ -24,4 +24,4 @@ yudot[ham_,a_,b_]:=dot[ham,a,b,xm,vxu,{1,1,0,0}]+dot[ham,a,b,ym,vyu,{0,1,1,0}]+d
 bdot[bv_,ham_]:=bv'[t]==-I D[ham,bv[t]\[Conjugate]]
 
 
-alldot[ham_]:={Table[Table[xm[ii,jj]'[t]==xmdot[ham,ii,jj],{jj,ii,numferm}],{ii,numferm}],Table[Table[ym[ii,jj]'[t]==ymdot[ham,ii,jj],{jj,ii+1,numferm}],{ii,numferm}],Table[Table[xu[ii,jj]'[t]==xudot[ham,ii,jj],{jj,ii+1,numferm}],{ii,numferm}],Table[Table[yu[ii,jj]'[t]==yudot[ham,ii,jj],{jj,ii+1,numferm}],{ii,numferm}]}
+alldot[ham_] := {Table[Table[xm[ii, jj]'[t] == xmdot[ham, ii, jj], {jj, ii, numferm}], {ii, numferm}], Table[Table[ym[ii, jj]'[t] == ymdot[ham, ii, jj], {jj, ii + 1, numferm}], {ii, numferm}], Table[Table[xu[ii, jj]'[t] == xudot[ham, ii, jj], {jj, ii + 1, numferm}], {ii, numferm}], Table[Table[yu[ii, jj]'[t] == yudot[ham, ii, jj], {jj, ii + 1, numferm}], {ii, numferm}]}
