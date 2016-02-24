@@ -1,9 +1,9 @@
 (* ::Package:: *)
 
-tscale=10;
+(*tscale=10;*)
 
 
-tmax=50;
+tmax=5;
 steps=500;
 times=Range[0,tmax,tmax/(steps-1)];
 
@@ -26,7 +26,7 @@ occupied={1,2,3,4,7,10,11,12,13,16};
 (*\[Omega][t_] := -20(1-2E^(-t^2/tscale^2))*)
 
 
-finMu=10;
+finMu=5;
 
 
 \[Omega][t_]:=-finMu(1-2E^(-t^2/tscale^2))
@@ -38,7 +38,7 @@ finMu=10;
 g[t_]:=(1-E^(-t^2/tscale^2))
 
 
-g[t_]:=1
+g[t_]:=10
 
 
 numbos = sites;

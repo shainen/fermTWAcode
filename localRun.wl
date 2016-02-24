@@ -29,9 +29,6 @@ Timing[<<2deqns.wl]
 <<2dinits.wl
 
 
-<<2dinitsFermMF.wl
-
-
 (* ::Subsection:: *)
 (*run TWA*)
 
@@ -39,7 +36,7 @@ Timing[<<2deqns.wl]
 Dynamic[rr]
 
 
-Timing[fnums=(TWAresults+1)/2;]
+Timing[fnums=TWAresults;]
 
 
 mmu=MaxMemoryUsed[]/10.^6
