@@ -13,7 +13,7 @@ initsToEqns[inits_]:=Table[bh[ii][0]==inits[[2,ii]],{ii,numbos}]~Join~Table[fvar
 
 
 TWAresults:=(
-start=First@NDSolve`ProcessEquations[Flatten[{TWAeqns,initsToEqns[randominitials[[1]]]}],xm[#,#]&/@Range[numferm],{t,0,tmax}];
+start=First@NDSolve`ProcessEquations[Flatten[{TWAeqns,initsToEqns[randominitials[[1]]]}],xm[#,#]&/@Range[numferm],{t,0,tmax},Method->{"EquationSimplification"->"Solve"}];
 fullTWA=0;
 Table[AddTo[fullTWA,singleRun[start,Flatten[initsToEqns[randominitials[[rr]]]]]/runs];,{rr,runs}];
 Chop[fullTWA]

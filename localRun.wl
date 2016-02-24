@@ -23,10 +23,13 @@ SetDirectory[NotebookDirectory[]]
 <<runfuncs.wl
 
 
-<<2deqns.wl
+Timing[<<2deqns.wl]
 
 
 <<2dinits.wl
+
+
+<<2dinitsFermMF.wl
 
 
 (* ::Subsection:: *)
@@ -36,7 +39,7 @@ SetDirectory[NotebookDirectory[]]
 Dynamic[rr]
 
 
-fnums=(TWAresults+1)/2;
+Timing[fnums=(TWAresults+1)/2;]
 
 
 mmu=MaxMemoryUsed[]/10.^6

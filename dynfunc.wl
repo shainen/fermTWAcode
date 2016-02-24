@@ -6,7 +6,16 @@ vxu[xx_,yy_]:=Which[yy==xx,0,yy<xx,-xu[yy,xx][t],True,xu[xx,yy][t]]
 vyu[xx_,yy_]:=Which[yy==xx,0,yy<xx,-yu[yy,xx][t],True,yu[xx,yy][t]]
 
 
-dot[ham_,a_,b_,der_,res_,sign_?VectorQ]:=Sum[D[ham,der[b,d][t]](-1)^sign[[1]]res[a,d]+D[ham,der[a,d][t]](-1)^sign[[3]] res[b,d],{d,numferm}]+Sum[D[ham,der[g,b][t]](-1)^sign[[2]]res[a,g]+D[ham,der[g,a][t]](-1)^sign[[4]] res[b,g],{g,numferm}]
+around[ss_] := nfc[cfneither[ss] + #] & /@ {{0, 0, 1}, {0, 0, -1}, {0, 1, 0}, {0, -1, 0}}
+
+
+otherspin[ff_]:=Mod[ff+sites,numferm,1]
+
+
+aroundboth[ff1_,ff2_]:=DeleteDuplicates[Flatten[{around[#],otherspin[#]}&/@{ff1,ff2}]]
+
+
+dot[ham_,a_,b_,der_,res_,sign_?VectorQ]:=Sum[D[ham,der[b,d][t]](-1)^sign[[1]]res[a,d]+D[ham,der[a,d][t]](-1)^sign[[3]] res[b,d],{d,aroundboth[a,b]}]+Sum[D[ham,der[g,b][t]](-1)^sign[[2]]res[a,g]+D[ham,der[g,a][t]](-1)^sign[[4]] res[b,g],{g,aroundboth[a,b]}]
 
 
 xmdot[ham_,a_,b_]:=dot[ham,a,b,xm,vym,{1,1,1,1}]+dot[ham,a,b,ym,vxm,{0,1,0,1}]+dot[ham,a,b,xu,vyu,{1,0,1,0}]+dot[ham,a,b,yu,vxu,{0,1,0,1}]

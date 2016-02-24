@@ -16,22 +16,25 @@ vars=bvars~Join~fvars;
 bonds=Flatten[{{#,nfc[cfneither[#]+{0,0,1}]},{#,nfc[cfneither[#]+{0,1,0}]}}&/@Range[numferm],1];
 
 
-hamkinb=Total[(bh[#][t]\[Conjugate]bh[#][t]-1/2)&/@Range[sites]];
+hamkinbF[bb_]:=bh[bb][t]\[Conjugate]bh[bb][t]-1/2
 
 
-hamkinf=Total[-vxm[#1,#2]&@@@bonds];
+hamkinfF[ff1_,ff2_]:=Total[DeleteDuplicates[(-vxm[ff1,#]&/@around[ff1])~Join~(-vxm[ff2,#]&/@around[ff2])]]
 
 
-hamint=Total[-1/2((-vxu[#1,#2]-I vyu[#1,#2])bh[#3][t]\[Conjugate]+(-vxu[#1,#2]+I vyu[#1,#2])bh[#3][t])&@@@({#,#+sites,#}&/@Range[sites])];
+hamintF[ff1_,ff2_]:=Total[DeleteDuplicates[-1/2((-vxu[Mod[#,sites,1],Mod[#,sites,1]+sites]-I vyu[Mod[#,sites,1],Mod[#,sites,1]+sites])bh[Mod[#,sites,1]][t]\[Conjugate]+(-vxu[Mod[#,sites,1],Mod[#,sites,1]+sites]+I vyu[Mod[#,sites,1],Mod[#,sites,1]+sites])bh[Mod[#,sites,1]][t])&/@{ff1,ff2}]]
 
 
-hamtot=\[Omega][t]hamkinb+hamkinf+g[t]hamint;
+hamtotfF[ff1_,ff2_]:=hamkinfF[ff1,ff2]+g[t]hamintF[ff1,ff2]
 
 
-beqns=Table[bdot[bh[nn],hamtot],{nn,numbos}];
+hamtotbF[ss_]:=\[Omega][t]hamkinbF[ss]+g[t]hamintF[ss,ss]
 
 
-feqns=alldot[hamtot];
+beqns=Table[bdot[bh[nn],hamtotbF[nn]],{nn,numbos}];
+
+
+feqns = {Table[Table[xm[ii, jj]'[t] == xmdot[hamtotfF[ii,jj] , ii, jj], {jj, ii, numferm}], {ii, numferm}], Table[Table[ym[ii, jj]'[t] == ymdot[hamtotfF[ii,jj] , ii, jj], {jj, ii + 1, numferm}], {ii, numferm}], Table[Table[xu[ii, jj]'[t] == xudot[hamtotfF[ii,jj], ii, jj], {jj, ii + 1, numferm}], {ii, numferm}], Table[Table[yu[ii, jj]'[t] == yudot[hamtotfF[ii,jj] , ii, jj], {jj, ii + 1, numferm}], {ii, numferm}]};
 
 
 TWAeqns=Flatten[{beqns,feqns}];

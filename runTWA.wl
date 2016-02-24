@@ -26,7 +26,7 @@ SetDirectory[Directory[]<>"/fermTWAcode"];
 <<2deqns.wl
 
 
-<<2dinitsFermMF.wl
+<<2dinits.wl
 
 
 (* ::Subsection:: *)
