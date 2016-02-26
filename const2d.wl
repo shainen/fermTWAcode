@@ -1,9 +1,9 @@
 (* ::Package:: *)
 
-(*tscale=10;*)
+tscale=0.2;
 
 
-tmax=5;
+tmax=1;
 steps=500;
 times=Range[0,tmax,tmax/(steps-1)];
 
@@ -26,7 +26,7 @@ occupied={1,2,3,4,7,10,11,12,13,16};
 (*\[Omega][t_] := -20(1-2E^(-t^2/tscale^2))*)
 
 
-finMu=5;
+finMu=10;
 
 
 \[Omega][t_]:=-finMu(1-2E^(-t^2/tscale^2))
@@ -35,10 +35,13 @@ finMu=5;
 \[Omega][t_]:=-finMu
 
 
-g[t_]:=(1-E^(-t^2/tscale^2))
+g[t_]:=20(1-E^(-t^2/tscale^2))
 
 
-g[t_]:=10
+g[t_]:=20 Piecewise[{{(1-Cos[\[Pi] t/tscale/2])/2,t<2 tscale},{1,t>=2 tscale}}]
+
+
+(*g[t_]:=10*)
 
 
 numbos = sites;

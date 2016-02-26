@@ -36,7 +36,13 @@ Timing[<<2deqns.wl]
 Dynamic[rr]
 
 
-Timing[fnums=TWAresults;]
+Timing[results=TWAresults;]
+
+
+fnums=results[[1]]\[Transpose];
+
+
+intCoh=results[[2]]\[Transpose];
 
 
 mmu=MaxMemoryUsed[]/10.^6
