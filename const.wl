@@ -14,19 +14,22 @@ runs=100;
 length=2;
 
 
-coh = {0,0};
+sites=length;
 
 
-occupied={1,3};
+coh = {3,3};
 
 
-\[Omega][t_] := -20(1-2E^(-t^2/tscale^2))
+occupied={};
 
 
-(*\[Omega][t_] := -1*)
+(*\[Omega][t_] := -20(1-2E^(-t^2/tscale^2))*)
 
 
-g[t_] := 1
+\[Omega][t_] := 1
+
+
+g[t_] := 1/3
 
 
 numbos = length;

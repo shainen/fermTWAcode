@@ -11,22 +11,19 @@
 SetDirectory[NotebookDirectory[]]
 
 
-<<const2d.wl
+<<const.wl
 
 
 <<dynfunc.wl
 
 
-<<2dfuncs.wl
-
-
 <<runfuncs.wl
 
 
-Timing[<<2deqns.wl]
+<<2siteeqns.wl
 
 
-<<2dinits.wl
+<<inits.wl
 
 
 (* ::Subsection:: *)
