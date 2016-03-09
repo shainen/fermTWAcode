@@ -23,7 +23,7 @@ SetDirectory[Directory[]<>"/fermTWAcode"];
 <<runfuncs.wl
 
 
-<<2deqns.wl
+t1=Timing[<<2deqns.wl];
 
 
 <<2dinits.wl
@@ -33,7 +33,7 @@ SetDirectory[Directory[]<>"/fermTWAcode"];
 (*run TWA*)
 
 
-results=TWAresults;
+t2=Timing[results=TWAresults;];
 
 
 fnums=results[[1]]\[Transpose];
@@ -48,4 +48,4 @@ mmu=MaxMemoryUsed[]/10.^6;
 SetDirectory[ParentDirectory[]];
 
 
-Save["fermTWAres.dat",{mmu,fnums,intCoh}];
+Save["fermTWAres.dat",{mmu,t1,t2,fnums,intCoh}];
